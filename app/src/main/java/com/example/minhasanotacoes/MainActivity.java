@@ -14,10 +14,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AnotacaoPreferencias preferencias;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferencias = new AnotacaoPreferencias(getApplicationContext());
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
