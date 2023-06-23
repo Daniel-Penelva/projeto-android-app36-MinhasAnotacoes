@@ -24,7 +24,8 @@ public class AnotacaoPreferencias {
     }
 
     public String recuperarAnotacao(){
-        return "";
+
+        return preferences.getString(CHAVE_NOME, "");
     }
 }
 
@@ -56,7 +57,25 @@ public class AnotacaoPreferencias {
  *
  * 5. Método `recuperarAnotacao()`:
  *    - Esse método retorna uma string.
+ *    - O objetivo desse método é recuperar a anotação armazenada nas preferências compartilhadas.
  *
+ *    Aqui está a explicação detalhada do método:
+ *
+ *    - preferences.getString(CHAVE_NOME, ""): Esse código utiliza o objeto preferences, que é uma instância da classe
+ *      SharedPreferences, para acessar as preferências compartilhadas. O método getString() é chamado para obter o
+ *      valor associado à chave CHAVE_NOME no arquivo de preferências.
+ *
+ *    - CHAVE_NOME é uma constante declarada anteriormente na classe, que representa a chave usada para armazenar e
+ *      recuperar a anotação.
+ *
+ *    - O segundo parâmetro "" é um valor padrão a ser retornado caso não haja um valor associado à chave CHAVE_NOME.
+ *      Nesse caso, se não houver uma anotação armazenada, será retornado uma string vazia.
+ *
+ *    - return: O valor retornado pelo método é o resultado da chamada de preferences.getString(), que pode ser a
+ *      anotação recuperada ou uma string vazia.
+ *
+ *    - Em resumo, o método recuperarAnotacao() retorna a anotação armazenada nas preferências compartilhadas, ou uma
+ *      string vazia se não houver uma anotação previamente armazenada.
  *
  * Em resumo, essa classe fornece os métodos para salvar e recuperar uma anotação usando o SharedPreferences no
  * Android.

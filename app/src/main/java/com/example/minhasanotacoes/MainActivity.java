@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Salvar a anotação
                 // Validar se foi digitado algo
                 String textoRecuperado = editAnotacao.getText().toString();
                 if(textoRecuperado.equals("")){
@@ -43,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Recuperar a anotação
+       String anotacao =  preferencias.recuperarAnotacao();
+
+       // Testar se a anotação está preenchida
+        if(!anotacao.equals("")){
+            editAnotacao.setText(anotacao);
+
+        }
     }
 }
 
@@ -83,6 +92,27 @@ public class MainActivity extends AppCompatActivity {
  *      preenchida.
  *    - Caso contrário, chama o método `salvarAnotacao()` do objeto `preferencias` para salvar a anotação no SharedPreferences.
  *    - Exibe uma Snackbar informando que a anotação foi salva com sucesso.
+ *
+ * 7 - Por fim foi implementado a recuperação da anotação armazenada nas preferências compartilhadas e em seguida é
+ *     feita uma verificação para determinar se a anotação está preenchida. Aqui está a explicação passo a passo:
+ *
+ *    - String anotacao = preferencias.recuperarAnotacao(): O código chama o método recuperarAnotacao() do objeto
+ *    preferencias, que é uma instância da classe AnotacaoPreferencias. Esse método retorna a anotação armazenada nas
+ *    preferências compartilhadas (ou uma string vazia se não houver uma anotação). O valor retornado é atribuído à
+ *    variável anotacao, que é uma string.
+ *
+ *    - if (!anotacao.equals("")): Nessa linha, é feita uma verificação para determinar se a anotacao está preenchida,
+ *      ou seja, se contém algum texto. O operador ! é usado para negar a condição seguinte. O método equals() é usado
+ *      para comparar se a string anotacao é diferente de uma string vazia "".
+ *
+ *    - editAnotacao.setText(anotacao): Se a condição no if for verdadeira, ou seja, se a anotação estiver preenchida,
+ *      o código dentro do bloco do if será executado. Nesse caso, o método setText() é chamado no objeto editAnotacao,
+ *      que é um campo de texto da interface do usuário. O valor da anotacao é definido como o texto exibido no campo
+ *      de texto.
+ *
+ *    - Em resumo, esse trecho de código recupera a anotação armazenada nas preferências compartilhadas e, se estiver
+ *      preenchida, exibe o valor da anotação em um campo de texto chamado editAnotacao. Isso permite que o usuário
+ *      visualize a anotação anteriormente salva ao abrir a atividade.
  *
  * Em resumo, essa classe representa a atividade principal de um aplicativo Android, onde o usuário pode digitar uma
  * anotação em um campo de texto e salvá-la clicando em um botão de ação. A anotação é salva usando a classe
